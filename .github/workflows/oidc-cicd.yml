@@ -16,15 +16,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug OIDC context
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Environment: ${{ github.environment }}"
+
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: arn:aws:iam::271776746443:role/s3-deploy
+          aws-region: ap-south-1
 
       - name: Sync static assets with long cache
         run: |
-          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+          aws s3 sync . s3://github-actions-oidc-oct12 \
             --delete \
             --exclude ".git/*" \
             --exclude ".github/*" \
@@ -36,5 +42,5 @@ jobs:
 
       - name: Sync index.html with no cache
         run: |
-          aws s3 cp index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html \
+          aws s3 cp index.html s3://github-actions-oidc-oct12/index.html \
             --cache-control "no-cache"
