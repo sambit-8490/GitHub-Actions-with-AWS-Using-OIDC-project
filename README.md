@@ -324,6 +324,8 @@ jobs:
 | Trigger | Actions > Sync Build to S3 > Run workflow |
 
 
+<img width="1568" height="689" alt="image" src="https://github.com/user-attachments/assets/61b85d70-34fe-43c8-8320-35e69e75cec4" />
+
 Bonus:-
 How to find it (3 ways)
 
