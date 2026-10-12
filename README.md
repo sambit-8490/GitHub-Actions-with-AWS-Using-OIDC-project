@@ -324,13 +324,17 @@ jobs:
 | Trigger | Actions > Sync Build to S3 > Run workflow |
 
 
-<img width="1568" height="689" alt="image" src="https://github.com/user-attachments/assets/61b85d70-34fe-43c8-8320-35e69e75cec4" />
 
-Bonus:-
+
+## Bonus:-
 How to find it (3 ways)
 
 GitHub API (easiest). Open these in a browser and read the id field:
+
 https://api.github.com/users/sambit-8490 gives the owner ID, 172500124.
 https://api.github.com/repos/sambit-8490/GitHub-Actions-with-AWS-Using-OIDC-project gives the repo ID, 1415076716.
 The debug step. Run the “Show OIDC subject” step once. It prints the full sub with both IDs already in it, so you can copy the whole string.
 The error itself. If you don’t want to look anything up, the failed run tells you the policy doesn’t match. The debug step then shows what to us
+
+
+<img width="1568" height="689" alt="image" src="https://github.com/user-attachments/assets/61b85d70-34fe-43c8-8320-35e69e75cec4" />
